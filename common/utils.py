@@ -41,21 +41,3 @@ def write_chunk_to_json(
 
     if logger:
         logger.info(f'Wrote {len(chunk)} articles to "{fname}"')
-
-#
-#
-#
-# from PIL import Image
-# from io import BytesIO
-# import pytesseract
-# import requests
-#
-# # Load the uploaded image
-# image_path = "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2Ft3ocdzsevtagnvobno5r.png"
-# image = BytesIO(requests.get(image_path).content)
-# image = Image.open(image)
-#
-# # Use pytesseract to extract text
-# extracted_text = pytesseract.image_to_string(image)
-#
-# print(extracted_text)
