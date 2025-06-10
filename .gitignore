@@ -1,0 +1,9 @@
+.env
+*.pem
+watchtower/config.json
+venv
+.idea
+__pycache__
+logs/*
+data/raw/*
+delta_lake/*
