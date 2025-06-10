@@ -1,0 +1,35 @@
+{
+    "terrorism": [
+        { "pattern": "bomb", "severity": "high" },
+        { "pattern": "explosion", "severity": "medium" },
+        { "pattern": "jihad", "severity": "high" },
+        { "pattern": "terrorist attack", "severity": "critical" },
+        { "pattern": "martyrdom", "severity": "medium" }
+    ],
+    "hacking": [
+        { "pattern": "data breach", "severity": "high" },
+        { "pattern": "sql injection", "severity": "medium" },
+        { "pattern": "ddos", "severity": "high" },
+        { "pattern": "zero-day exploit", "severity": "critical" },
+        { "pattern": "phishing", "severity": "medium" }
+    ],
+    "sexual_abuse": [
+        { "pattern": "child exploitation", "severity": "critical" },
+        { "pattern": "rape", "severity": "critical" },
+        { "pattern": "molestation", "severity": "high" },
+        { "pattern": "grooming", "severity": "high" },
+        { "pattern": "non-consensual", "severity": "high" }
+    ],
+    "zero_day": [
+        { "pattern": "undisclosed vulnerability", "severity": "high" },
+        { "pattern": "zero-day", "severity": "critical" },
+        { "pattern": "no known patch", "severity": "high" }
+    ],
+    "hate_speech": [
+        { "pattern": "racial slur", "severity": "medium" },
+        { "pattern": "nazi", "severity": "high" },
+        { "pattern": "white supremacy", "severity": "high" },
+        { "pattern": "ethnic cleansing", "severity": "critical" },
+        { "pattern": "hate crime", "severity": "high" }
+    ]
+}

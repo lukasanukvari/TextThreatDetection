@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  collect_n_ingest:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: af_collect_n_ingest
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./delta_lake:/app/delta_lake
+      - ./logs:/app/logs
+    working_dir: /app
+    command: >
+      bash -c "
+        python collectors/dev_to.py &&
+        python collectors/nakedcapitalism_com.py &&
+        python collectors/reddit_com.py &&
+        spark-submit --packages io.delta:delta-core_2.12:2.4.0 spark_ingest/text_ingest.py &&
+        spark-submit --packages io.delta:delta-core_2.12:2.4.0 spark_ingest/threat_mapping_ingest.py"
+
+  enrich_stream:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: af_enrich_stream
+    env_file:
+      - .env
+    depends_on:
+      - collect_n_ingest
+    volumes:
+      - ./data:/app/data
+      - ./delta_lake:/app/delta_lake
+      - ./logs:/app/logs
+    working_dir: /app
+    command: >
+      spark-submit --packages io.delta:delta-core_2.12:2.4.0 spark_enrichment/stream_text_enrichment.py
